@@ -29,11 +29,11 @@ This library is built for react native to work with Portable Zebra Bluetooth Pri
 2. Append the following lines to `android/settings.gradle`:
   	```
     include ':react-native-zebra-bt-printer'
-    project(':react-native-zebra-bt-printer').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-zebra-bt-printer/android')
+    project(':react-native-zebra-bt-printer').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-zebra-bt-printer/android')
   	```
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
   	```
-    compile project(':react-native-zebra-bt-printer')
+    implementation project(':react-native-zebra-bt-printer')
   	```
 
 
