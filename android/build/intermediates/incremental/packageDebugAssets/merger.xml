@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/nextg/Project/react-native/klikcitilinkstaff/node_modules/react-native-zebra-bt-printer/android/src/main/assets"/><source path="/Users/nextg/Project/react-native/klikcitilinkstaff/node_modules/react-native-zebra-bt-printer/android/build/generated/assets/shaders/debug"/></dataSet><dataSet config="debug"><source path="/Users/nextg/Project/react-native/klikcitilinkstaff/node_modules/react-native-zebra-bt-printer/android/src/debug/assets"/></dataSet></merger>

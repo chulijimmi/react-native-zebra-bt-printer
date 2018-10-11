@@ -1,0 +1,24 @@
+{
+  "name": "react-native-zebra-bt-printer",
+  "version": "0.0.16",
+  "description": "'Zebra bluetooth printer for react native'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://bitbucket.org/cyclelution/react-native-zebra-bt-printer.git"
+  },
+  "keywords": [
+    "bluetooth",
+    "react-native",
+    "zebra printer"
+  ],
+  "author": "Cyclelution <info@cyclelution.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://bitbucket.org/cyclelution/react-native-zebra-bt-printer/issues"
+  },
+  "homepage": "https://bitbucket.org/cyclelution/react-native-zebra-bt-printer#readme"
+}
