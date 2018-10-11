@@ -53,44 +53,121 @@ iOS requires the printer serial#.
 Android requires the MAC ADDRESS.
 
 ```javascript
-import ZebraBTPrinter from 'react-native-zebra-bt';
+import React, { Component } from 'react';
 
-const printLabel = async () => {
+import {
+	AsyncStorage,
+	Text,
+	TextInput,
+	TouchableOpacity,
+	StyleSheet,
+	Alert,
+	View
+} from 'react-native';
 
-  console.log('printLabel APP');
+import ZebraBTPrinter from 'react-native-zebra-bt-printer';
 
-  if(userText1 === ''){
-    Alert.alert('Your label seems to be missing content!');
-    return false;
-  }
+const printLabel = async(userPrintCount, userText1, userText2, userText3) => {
 
+	console.log('printLabel APP');
 
-  //Store your printer serial or mac, ios needs serial, android needs mac
-  const printerSerial = await AsyncStorage.getItem('printerSerial');
+	// if (userText1 === '') {
+	// 	Alert.alert('Your label seems to be missing content!');
+	// 	return false;
+	// }
 
-  //check if printer is set
-  if (printerSerial !== null && printerSerial !== '') {
+	try {
 
-    const lineSeparator = '\r\n';
-    // userCommand is presented in CPCL printer programming language
-    // full CPCL programming guide can be found here https://www.zebra.com/content/dam/zebra/manuals/en-us/printer/cpcl-link-os-pg-en.pdf
-    const userCommand = `0 200 200 210 1${lineSeparator}TEXT 4 0 30 40 This is a CPCL test.${lineSeparator}FORM${lineSeparator}PRINT${lineSeparator}`
+		//Store your printer serial or mac, ios needs serial, android needs mac
+		const printerSerial = String('CC78AB7A48BA');
 
-    ZebraBTPrinter.printLabel(printerSerial, userCommand).then((result) => {
+		//check if printer is set
+		if (printerSerial !== null && printerSerial !== '') {
 
-      if (result === true) {
-        Alert.alert('Successfully printed');
-      } else {
-        Alert.alert('Print failed, please check printer connection');
-      }
+      console.log('printerSerial', printerSerial);
+			ZebraBTPrinter.printLabel(printerSerial, userPrintCount, userText1, userText2, userText3).then((result) => {
 
-    })
-    .catch((err) => console.log(err.message));
+					console.log(result);
 
-  } else {
+					if (result === false) {
+						Alert.alert('Print failed, please check printer connection');
+					}
 
-    Alert.alert('Print failed, no printer setup found');
+				})
+				.catch((err) => console.log(err.message));
 
-  }
+		} else {
+
+			Alert.alert('Print failed, no printer setup found');
+
+		}
+
+	} catch (error) {
+		// Error retrieving data
+		console.log('Async getItem failed');
+	}
+
 }
+
+class App extends Component {
+
+	constructor() {
+		super();
+
+		this.state = {
+			userText1: 'testing',
+			userText2: 'hello',
+			userText3: 'word',
+			userPrintCount: '1'
+		};
+
+	}
+
+	componentDidMount() {
+
+	}
+
+	render() {
+
+		return (
+			<View style={styles.container}>
+				<Text style={styles.welcome}>
+					Welcome to React Native Zebra Printer Example!
+				</Text>
+				<TouchableOpacity
+				style={{borderWidth:1, borderColor:'grey', padding:3, width:100, backgroundColor:'white'}}
+				onPress={ () => {
+					printLabel(this.state.userPrintCount, this.state.userText1, this.state.userText2, this.state.userText3);
+				} }>
+					<Text>Print!</Text>
+				</TouchableOpacity>
+			</View>
+		);
+
+	}
+
+}
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+		paddingBottom: 30,
+		backgroundColor: '#F5FCFF',
+	},
+	welcome: {
+		fontSize: 20,
+		textAlign: 'center',
+		margin: 10,
+	},
+	instructions: {
+		textAlign: 'center',
+		color: '#333333',
+		marginBottom: 5,
+	},
+});
+
+export default App;
+
 ```
