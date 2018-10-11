@@ -92,7 +92,7 @@ public class RCTZebraBTPrinterModule extends ReactContextBaseJavaModule {
         }
 
       } catch ( ConnectionException e) {
-        response.resolve(true);
+        response.resolve(false);
         // response.resolve("Printer device failed to open");
       }
 
