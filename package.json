@@ -1,6 +1,6 @@
 {
   "name": "react-native-zebra-bt-printer",
-  "version": "0.0.16",
+  "version": "18.10.11",
   "description": "'Zebra bluetooth printer for react native'",
   "main": "index.js",
   "scripts": {
