@@ -87,6 +87,7 @@ public class RCTZebraBTPrinterModule extends ReactContextBaseJavaModule {
             // response.resolve("Printer label com failed to open 2nd stage");
 
         } finally {
+          printerConnection.close();
           response.resolve(true);
           // response.resolve("Printer successful");
         }
